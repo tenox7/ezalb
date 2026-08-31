@@ -164,6 +164,7 @@ size_t screen_graphics_run(vt420_system *sys, i8051_cpu *cpu,
         LOG_ERRORF("Graphics error: SDL_Init: %s", SDL_GetError());
         return (size_t)-1;
     }
+    SDL_EnableScreenSaver(); /* SDL_Init disables it; let the host display sleep */
     SDL_Window *win = SDL_CreateWindow(FB_WINDOW_TITLE,
                                        SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
                                        FB_WIDTH, FB_HEIGHT, SDL_WINDOW_RESIZABLE);
